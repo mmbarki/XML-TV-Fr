@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace racacax\XmlTv\Component;
 
 use Amp\Sync\Channel;
+use racacax\XmlTv\ValueObject\DummyChannel;
 use racacax\XmlTv\ValueObject\EPGDate;
 use racacax\XmlTv\ValueObject\EPGEnum;
-use racacax\XmlTv\ValueObject\DummyChannel;
 
 use function Amp\async;
 use function Amp\delay;
@@ -15,6 +15,9 @@ use function Amp\Parallel\Worker\getWorker;
 
 class ChannelThread
 {
+    /** @var array<string, bool> Tracks providers that failed with a connection error (no server response). Shared across all instances. */
+    private static array $connectionErrorProviders = [];
+
     protected ?string $channel;
     protected ?string $provider = null;
     protected ?array $info;
@@ -123,12 +126,21 @@ class ChannelThread
         $cache = $this->generator->getCache();
         flush();
         $providerResult = $this->getProviderResult($providerName, $date);
-        if ($providerResult == 'false') {
+        if ($providerResult == 'connection_error' || $providerResult == 'false') {
             $this->failedProviders[] = $providerName;
             Logger::addChannelFailedProvider($this->channel, $date, get_class($provider));
+            if ($providerResult == 'connection_error') {
+                self::$connectionErrorProviders[$providerName] = true;
+                $connectivityUrl = $this->generator->getConfigurator()->getConnectivityCheckUrl();
+                if ($connectivityUrl !== null && count(self::$connectionErrorProviders) > 2) {
+                    ConnectivityChecker::checkOrExit($connectivityUrl);
+                    self::$connectionErrorProviders = [];
+                }
+            }
 
             return ['success' => false];
         } else {
+            self::$connectionErrorProviders = [];
             [$startTimes, $endTimes] = Utils::getStartAndEndDatesFromXMLString($providerResult);
             $state = $provider->getChannelStateFromTimes($startTimes, $endTimes, $this->generator->getConfigurator());
             /**

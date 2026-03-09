@@ -40,7 +40,8 @@
     "amphp/parallel": "^2.2",
     "ext-pcntl": "*",
     "ext-posix": "*",
-    "ext-intl": "*"
+    "ext-intl": "*",
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.3",

@@ -59,6 +59,7 @@ class Configurator
 
     private int $nbThreads;
     private int $minEndTime;
+    private ?string $connectivityCheckUrl;
     private UI $ui;
 
     /**
@@ -89,7 +90,8 @@ class Configurator
         int     $nbThreads = 1,
         int     $minEndTime = 84600, # 23h30
         array   $extraParams = [],
-        ?UI   $ui = null
+        ?UI   $ui = null,
+        ?string $connectivityCheckUrl = 'https://xmltvfr.fr'
     ) {
         if (isset($timeLimit)) {
             set_time_limit($timeLimit);
@@ -109,6 +111,7 @@ class Configurator
         $this->extraParams = $extraParams;
         $this->nbThreads = $nbThreads;
         $this->minEndTime = $minEndTime;
+        $this->connectivityCheckUrl = $connectivityCheckUrl;
         $this->ui = $ui ?? new MultiColumnUI();
     }
 
@@ -153,7 +156,8 @@ class Configurator
             $data['nb_threads'] ?? 1,
             $data['min_endtime'] ?? 84600, # 23h30
             $data['extra_params'] ?? [],
-            Utils::getUI($data['ui'] ?? 'MultiColumnUI')
+            Utils::getUI($data['ui'] ?? 'MultiColumnUI'),
+            array_key_exists('connectivity_check_url', $data) ? $data['connectivity_check_url'] : 'https://xmltvfr.fr'
         );
     }
 
@@ -237,6 +241,11 @@ class Configurator
     public function getMinEndTime(): int
     {
         return $this->minEndTime;
+    }
+
+    public function getConnectivityCheckUrl(): ?string
+    {
+        return $this->connectivityCheckUrl;
     }
 
     public function getGenerator(): Generator

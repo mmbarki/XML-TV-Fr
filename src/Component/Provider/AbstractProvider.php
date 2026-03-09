@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace racacax\XmlTv\Component\Provider;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
+use racacax\XmlTv\Component\ChannelFactory;
+use racacax\XmlTv\Component\Exception\NetworkConnectionException;
 use racacax\XmlTv\Component\ProviderCache;
 use racacax\XmlTv\Component\Utils;
-use racacax\XmlTv\ValueObject\EPGEnum;
-use GuzzleHttp\Client;
-use racacax\XmlTv\Component\ChannelFactory;
 use racacax\XmlTv\Configurator;
 use racacax\XmlTv\ValueObject\Channel;
+use racacax\XmlTv\ValueObject\EPGEnum;
 
 abstract class AbstractProvider
 {
@@ -127,10 +129,9 @@ abstract class AbstractProvider
                     'timeout' => 20
                 ]
             );
+        } catch (ConnectException $e) {
+            throw new NetworkConnectionException('Connection failed: '.$e->getMessage(), 0, $e);
         } catch (\Throwable $e) {
-            // Hep to debug
-            // dump($e);
-            // No error accepted
             return '';
         }
         $content = html_entity_decode($response->getBody()->getContents(), ENT_QUOTES);

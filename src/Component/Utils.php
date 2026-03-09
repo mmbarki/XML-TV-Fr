@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace racacax\XmlTv\Component;
 
 use DateTimeZone;
+use racacax\XmlTv\Component\Exception\NetworkConnectionException;
 use racacax\XmlTv\Component\UI\MultiColumnUI;
 use racacax\XmlTv\Component\UI\ProgressiveUI;
 use racacax\XmlTv\Component\UI\UI;
@@ -58,6 +59,8 @@ class Utils
         try {
             date_default_timezone_set('Europe/Paris');
             $obj = $provider->constructEpg($channelId, $date);
+        } catch (NetworkConnectionException $_) {
+            return 'connection_error';
         } catch (Throwable $_) {
             $obj = false;
         }
