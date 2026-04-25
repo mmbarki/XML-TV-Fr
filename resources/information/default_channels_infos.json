@@ -8294,5 +8294,45 @@
   "CanalPlusSportAlt.fr": {
     "name": "CANAL+ SPORT",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/574/canal-ouah/CHN43FB/CHN43FB_574_date?=.png"
+  },
+  "TraceUrbanSA.af": {
+    "name": "TRACE URBAN (SA)",
+    "icon": "https://media.umbraco.io/trace-backoffice/iuidd41o/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-urban-southern-africa_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceUrbanInter.af": {
+    "name": "TRACE URBAN (INTER)",
+    "icon": "https://media.umbraco.io/trace-backoffice/gbvclgv4/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-urban-international_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceNaija.af": {
+    "name": "TRACE NAIJA",
+    "icon": "https://media.umbraco.io/trace-backoffice/rkyl1h4s/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-naija-nigeria_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceNgoma.af": {
+    "name": "TRACE NGOMA",
+    "icon": "https://media.umbraco.io/trace-backoffice/wvyotsas/2025_tngo_channel_logo_traceplus_eng_1200x800.png?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceJama.af": {
+    "name": "TRACE JAMA",
+    "icon": "https://media.umbraco.io/trace-backoffice/wx4cscwp/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-jama-ghana_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceUK.uk": {
+    "name": "TRACE UK",
+    "icon": "https://media.umbraco.io/trace-backoffice/lu0blq2l/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-uk-united-kingdom_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceGospelSA.af": {
+    "name": "TRACE GOSPEL (SA)",
+    "icon": "https://media.umbraco.io/trace-backoffice/u5kjb4ra/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-gospel-southern-africa_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceMuzika.af": {
+    "name": "TRACE MUZIKA",
+    "icon": "https://media.umbraco.io/trace-backoffice/bhljdj0m/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-muzika-ethiopia_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceBrasil.br": {
+    "name": "TRACE BRASIL",
+    "icon": "https://media.umbraco.io/trace-backoffice/srvpyki2/01_2024_trace-_pt_tv-channels-logos-with-zone-inclusion_trace-brasil-brasil__1200x800_v1.png?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
+  },
+  "TraceGospelROA.af": {
+    "name": "TRACE GOSPEL (EAST/WEST AFRICA)",
+    "icon": "https://media.umbraco.io/trace-backoffice/m5thaean/01_2024_trace-_eng_tv-channels-logos-with-zone-inclusion_trace-gospel-nigeria-east-africa_1200x800_v1.jpg?anchor=center&mode=crop&upscale=false&format=webp&quality=50"
   }
 }

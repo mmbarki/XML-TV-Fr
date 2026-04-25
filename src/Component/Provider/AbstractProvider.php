@@ -107,7 +107,7 @@ abstract class AbstractProvider
      * @param array<string, string> $headers
      * @return string
      */
-    protected function getContentFromURL(string $url, array $headers = [], bool $ignoreCache = false): string
+    protected function getContentFromURL(string $url, array $headers = [], bool $ignoreCache = false, bool $decodeEntities = true): string
     {
         if (empty($headers['User-Agent'])) {
             $headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0';
@@ -134,7 +134,7 @@ abstract class AbstractProvider
         } catch (\Throwable $e) {
             return '';
         }
-        $content = html_entity_decode($response->getBody()->getContents(), ENT_QUOTES);
+        $content = $decodeEntities ? html_entity_decode($response->getBody()->getContents(), ENT_QUOTES) : $response->getBody()->getContents();
         $cache->setContent($content);
 
         return $content;
