@@ -5584,6 +5584,10 @@
     "name": "PASSION BOLLYWOOD",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/180311/canal-ouah/CHN43FB/PASSIONBOLLYWOOD_640x480-Copie-EFiz?=.png"
   },
+  "PassionNovelas.af": {
+    "name": "Passion Novelas",
+    "icon": "http://cdn.startimestv.com/static/files/console/bb61d558-adab-45ed-86c8-4cdf317792a4.png?l=320"
+  },
   "PBS.ca": {
     "name": "PBS",
     "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBYNZJwTkbKZRPlLafNNuK8be4igh0DjpY_8xrz6TRrAaAn-p_KLqzNO-H_w&amp;s"
@@ -5707,10 +5711,6 @@
   "ParisPremiere.frdrom": {
     "name": "PARIS PREMIERE",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/160070/canal-ouah/CHN43FB/CHN43FB_Paris_Premiere_20220415?=.png"
-  },
-  "PassionBollywood.af": {
-    "name": "PASSION BOLLYWOOD",
-    "icon": "https://cdn.startimestv.com/static/files/console/8ae051cb-5e83-4e0e-afac-4686e304b003.jpg"
   },
   "Pbo.af": {
     "name": "PBO",
