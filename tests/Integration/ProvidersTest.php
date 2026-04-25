@@ -23,6 +23,7 @@ use racacax\XmlTv\Component\Provider\SudInfo;
 use racacax\XmlTv\Component\Provider\Tebeosud;
 use racacax\XmlTv\Component\Provider\Tele2Semaines;
 use racacax\XmlTv\Component\Provider\Tele7Jours;
+use racacax\XmlTv\Component\Provider\StarTimesTV;
 use racacax\XmlTv\Component\Provider\TracePlus;
 use racacax\XmlTv\Component\Provider\Teleboy;
 use racacax\XmlTv\Component\Provider\Telecablesat;
@@ -70,6 +71,7 @@ class ProvidersTest extends TestCase
         [Tele2Semaines::class, ['channels' => ['TF1.fr']]],
         [LInternaute::class, ['channels' => ['TF1.fr']]],
         [TracePlus::class, ['channels' => ['TraceUrban.fr']]],
+        [StarTimesTV::class, ['channels' => ['ZeeOne.st']]],
     ];
     private static array $IGNORED_PROVIDERS = [Teleboy::class, LEquipeLive::class];
 
