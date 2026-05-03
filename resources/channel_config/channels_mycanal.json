@@ -179,14 +179,6 @@
     "id": 470,
     "region": "fr"
   },
-  "JOne.fr": {
-    "id": 484,
-    "region": "fr"
-  },
-  "ParamountChannel.fr": {
-    "id": 487,
-    "region": "fr"
-  },
   "CartoonNetwork.fr": {
     "id": 502,
     "region": "fr"
@@ -339,10 +331,6 @@
     "id": 680,
     "region": "fr"
   },
-  "GameOne.fr": {
-    "id": 592,
-    "region": "fr"
-  },
   "NickelodeonJunior.fr": {
     "id": 593,
     "region": "fr"
@@ -369,10 +357,6 @@
   },
   "TouteHistoire.fr": {
     "id": 620,
-    "region": "fr"
-  },
-  "BET.fr": {
-    "id": 628,
     "region": "fr"
   },
   "AstroCenter.fr": {
@@ -1219,10 +1203,6 @@
     "id": 180129,
     "region": "bf"
   },
-  "GameOne.af": {
-    "id": 180136,
-    "region": "bf"
-  },
   "UshuaiaTV.af": {
     "id": 180138,
     "region": "bf"
@@ -1237,10 +1217,6 @@
   },
   "NationalGeographic.af": {
     "id": 180145,
-    "region": "bf"
-  },
-  "MtvHits.af": {
-    "id": 180147,
     "region": "bf"
   },
   "TeletoonPlus.af": {
@@ -1405,10 +1381,6 @@
   },
   "CanalPlusEllesCentre.af": {
     "id": 180302,
-    "region": "bf"
-  },
-  "ParamountTV.af": {
-    "id": 180303,
     "region": "bf"
   },
   "NhkWorldTV.af": {
@@ -1609,10 +1581,6 @@
   },
   "Trek.af": {
     "id": 180566,
-    "region": "bf"
-  },
-  "JONE.af": {
-    "id": 180568,
     "region": "bf"
   },
   "BantambaTV.af": {
@@ -2271,10 +2239,6 @@
     "id": 160128,
     "region": "mg"
   },
-  "GameOne.frdrom": {
-    "id": 160136,
-    "region": "mg"
-  },
   "UshuaÏaTV.frdrom": {
     "id": 160138,
     "region": "mg"
@@ -2293,10 +2257,6 @@
   },
   "Gulli.frdrom": {
     "id": 160146,
-    "region": "mg"
-  },
-  "MtvHits.frdrom": {
-    "id": 160147,
     "region": "mg"
   },
   "TeletoonPlus.frdrom": {
@@ -2401,10 +2361,6 @@
   },
   "VoirPlusOceanIndien.frdrom": {
     "id": 160301,
-    "region": "mg"
-  },
-  "ParamountTV.frdrom": {
-    "id": 160303,
     "region": "mg"
   },
   "Hustler.frdrom": {

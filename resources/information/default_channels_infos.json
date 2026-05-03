@@ -560,10 +560,6 @@
     "icon": "http://cdn.startimestv.com/static/files/console/82791567-b38b-46d0-8c7b-712ac034d75a.png"
   },
   "Arewa24.af": {
-    "name": "Arewa 24",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/180686/canal-ouah/CHN43FB/AREWA24_myCANAL_640x480?=.png"
-  },
-  "Arewa24.af": {
     "name": "AREWA 24",
     "icon": "http://cdn.startimestv.com/static/image/product/10616362_1471933426390811_2838520457749399231_n.jpg"
   },
@@ -726,10 +722,6 @@
   "BET.ca": {
     "name": "BET Canada",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/BET_Logo.svg/800px-BET_Logo.svg.png"
-  },
-  "BET.fr": {
-    "name": "BET",
-    "icon": "https://focus.telerama.fr/500x500/0000/00/01/clear-1960.png"
   },
   "BETENG.af": {
     "name": "BET ENG",
@@ -3294,10 +3286,6 @@
   },
   "FarinWata.af": {
     "name": "FARIN WATA",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/{resolutionXY}/filters:quality({imageQualityPercentage})/canalplus-cdn.canal-plus.io/p1/channel/180740/canal-ouah/CHN43FB/FARINWATA_myCANAL_640x480"
-  },
-  "FarinWata.af": {
-    "name": "FARIN WATA",
     "icon": "http://cdn.startimestv.com/banner/legacy/c_1395221680.png"
   },
   "FashionAfricaTV.af": {
@@ -3611,22 +3599,6 @@
   "GalaxyTv.af": {
     "name": "GALAXY tv",
     "icon": "http://cdn.startimestv.com/banner/legacy/c_763602671.png"
-  },
-  "GameOne.af": {
-    "name": "GAME ONE",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/50029/canal-ouah/CHN43FB/CHN43FB_50029_20241022-spHk?=.png"
-  },
-  "GameOne.fr": {
-    "name": "Game One",
-    "icon": "https://focus.telerama.fr/500x500/0000/00/01/clear-87.png"
-  },
-  "GameOne.frdrom": {
-    "name": "GAME ONE",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/{resolutionXY}/filters:quality({imageQualityPercentage})/canalplus-cdn.canal-plus.io/p1/channel/160136/canal-ouah/CHN43FB/GAMEONEFB"
-  },
-  "GameOneplus1.fr": {
-    "name": "Game One +1",
-    "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/Game_One_1_color.png"
   },
   "GamePlus.ca": {
     "name": "GamePlus",
@@ -4110,15 +4082,11 @@
   },
   "Iqraa.af": {
     "name": "IQRAA",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/180279/canal-ouah/CHN43FB/IQRAA_myCANAL_640x480?=.png"
+    "icon": "http://cdn.startimestv.com/banner/legacy/c_124272229.png"
   },
   "Iqraa.frdrom": {
     "name": "IQRAA",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/160279/canal-ouah/CHN43FB/IQRAA_myCANAL_640x480?=.png"
-  },
-  "Iqraa.af": {
-    "name": "IQRAA",
-    "icon": "http://cdn.startimestv.com/banner/legacy/c_124272229.png"
   },
   "IqraaInternational.ar": {
     "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/Iqraa_International_color.png",
@@ -4147,14 +4115,6 @@
   "JESUS24TV.af": {
     "name": "JESUS 24 TV",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/180344/canal-ouah/CHN43FB/JESUS24_GABON_640x480-Z42r?=.png"
-  },
-  "JONE.af": {
-    "name": "J-ONE",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/img-hapi.canalplus.pro:80/ServiceImage/ImageID/56805446?=.png"
-  },
-  "JOne.fr": {
-    "name": "J-One",
-    "icon": "https://focus.telerama.fr/500x500/0000/00/01/clear-1585.png"
   },
   "JSBCInternational.cn": {
     "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/JSBC_International_color.png",
@@ -4319,10 +4279,6 @@
   "LCNHD.ca": {
     "name": "LCNHD",
     "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV_iiJ10NHOI_YCJI2RoqaH1Mr60SRTY_ECOG6C0BgwUgCK9HP49V3DHIsHA&amp;s"
-  },
-  "LCP100.fr": {
-    "name": "LCP-AN 24/24",
-    "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/LCP_AN_24_24_color.png"
   },
   "LEquipe.frdrom": {
     "name": "L Equipe",
@@ -4796,25 +4752,9 @@
     "name": "MTV2",
     "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCGYIxvnA3R0kfKo7HSzjKigJDIwi8itQCkFw63YetJhSPilCXU2zrfZ1fg&amp;s"
   },
-  "MTVBase.fr": {
-    "name": "MTVBase",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPFk1mPfkG2kFfjfJ8px0UKqS7luvaZnZbCNwFsPlrUWA8u4NpKf_217qSLg&amp;s"
-  },
   "MTVC.ca": {
     "name": "MTVC",
     "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvuETkZPla4YFQhd7U1E6_FDP18sEQaGoM4YT5w4ulrEmIiEgwu9Ezl-4xzqA&amp;s"
-  },
-  "MTVDance.fr": {
-    "name": "MTV Dance",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE90sJgXdYMjiql2lQixPjzc93ebuewQN4M9Ebi8wv0akl7hcxoyGBRm56cA&amp;s"
-  },
-  "MTVHits.fr": {
-    "name": "MTV Hits",
-    "icon": "https://static-cdn.tv.sfr.net/data/img/apps/chaines/logos/MTVHITSlogonoir100x100.png"
-  },
-  "MTVHits.uk": {
-    "name": "MTV Hits UK",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyAjih485AKc__iezrytSkM2cpQ0tq1o9N06FC8GBmnHfbV78M0hSyND-w6_0&amp;s"
   },
   "MTVLEBANON.af": {
     "name": "MTV LEBANON",
@@ -4995,14 +4935,6 @@
   "MtvFrance.frdrom": {
     "name": "MTV France",
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/img-hapi.canalplus.pro:80/ServiceImage/ImageID/4491956?=.png"
-  },
-  "MtvHits.af": {
-    "name": "MTV HITS",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/img-hapi.canalplus.pro:80/ServiceImage/ImageID/63795800?=.png"
-  },
-  "MtvHits.frdrom": {
-    "name": "MTV HITS",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/{resolutionXY}/filters:quality({imageQualityPercentage})/canalplus-cdn.canal-plus.io/p1/channel/160147/canal-ouah/CHN43FB/MTVHITSFB"
   },
   "MtvIndia.frdrom": {
     "name": "MTV India",
@@ -5688,22 +5620,6 @@
     "name": "PalmaresADISQ",
     "icon": "https://cdn.tvpassport.com/image/station/640x480/v2/s102689_h15_aa.png"
   },
-  "ParamountChannel.fr": {
-    "name": "Paramount Channel",
-    "icon": "https://focus.telerama.fr/500x500/0000/00/01/clear-1562.png"
-  },
-  "ParamountChannelDecale.fr": {
-    "name": "Paramount Channel Décalé",
-    "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/Paramount_Channel_Decale_color.png"
-  },
-  "ParamountTV.af": {
-    "name": "PARAMOUNT TV",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/50048/canal-ouah/CHN43FB/CHN43FB_50048_20250120-WRqx?=.png"
-  },
-  "ParamountTV.frdrom": {
-    "name": "PARAMOUNT TV",
-    "icon": "https://thumb.canalplus.pro/http/unsafe/{resolutionXY}/filters:quality({imageQualityPercentage})/img-hapi.canalplus.pro:80/ServiceImage/ImageID/3039451"
-  },
   "ParisPremiere.fr": {
     "name": "Paris Première",
     "icon": "https://www.programme-tv.net/imgre/fit/~2~channel~ecf598fd002ccb9a.png/480x480/quality/100/paris-premiere.png"
@@ -5843,14 +5759,6 @@
   "Pstv.af": {
     "name": "PSTV",
     "icon": "https://thumb.canalplus.pro/http/unsafe/{resolutionXY}/filters:quality({imageQualityPercentage})/canalplus-cdn.canal-plus.io/p1/channel/180728/canal-ouah/CHN43FB/PSTVHD_myCANAL_640x480"
-  },
-  "PublicSenat.fr": {
-    "icon": "https://static-cdn.tv.sfr.net/data/logos/tv_services/publicsenat-100x100.png",
-    "name": "Public Sénat"
-  },
-  "PublicSenat2424.fr": {
-    "name": "Public Sénat 24\\/24",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpR6zUWhGkZJgfMXt21ugKRqn72TpI5XJZiMBD5Stw-F_V7F6fcZ0EKyp0zDY&amp;s"
   },
   "Pulaagu.af": {
     "name": "PULAAGU HD",
@@ -6213,11 +6121,11 @@
     "icon": "https://thumb.canalplus.pro/http/unsafe/640x480/filters:quality(100)/canalplus-cdn.canal-plus.io/p1/channel/180666/canal-ouah/CHN43FB/RTS2_myCANAL_640x480-0?=.png"
   },
   "RTSDeux.ch": {
-    "name": "RTS Deux",
+    "name": "RTS 2",
     "icon": "https://www.programme-tv.net/imgre/fit/~2~channel~96e7582dedb5aa8e.png/480x480/quality/100/rts-deux.png"
   },
   "RTSUn.ch": {
-    "name": "RTS Un",
+    "name": "RTS 1",
     "icon": "https://www.programme-tv.net/imgre/fit/~2~channel~86b9c7fb157c9a56.png/480x480/quality/100/rts-un.png"
   },
   "RWD.ca": {
@@ -8650,10 +8558,6 @@
   "ZeeBollymovies.af": {
     "name": "ZEE BOLLYMOVIES",
     "icon": "http://cdn.startimestv.com/static/files/console/a7ecdb94-cabc-4b42-8a31-0dc3ca02ecc5.jpg"
-  },
-  "ZeeCinema.af": {
-    "name": "Zee Cinema",
-    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGNtHfN1dTBAp_XFNu6xGEeHSXQvOV-l5VV_JYiKj0O6MNcj8UO31Agio2AQ&amp;s"
   },
   "ZeeCinema.af": {
     "name": "ZEE CINEMA",

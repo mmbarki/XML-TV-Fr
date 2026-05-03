@@ -423,14 +423,6 @@
     "id": 508,
     "name": "MCM"
   },
-  "MTVBase.fr": {
-    "id": 616,
-    "name": "MTV Base"
-  },
-  "MTVHits.fr": {
-    "id": 530,
-    "name": "MTV Hits France"
-  },
   "MezzoLiveHD.fr": {
     "id": 458,
     "name": "Mezzo Live HD"
@@ -438,10 +430,6 @@
   "NatGeoWild.fr": {
     "id": 519,
     "name": "National Geographic Wild"
-  },
-  "ParamountChannel.fr": {
-    "id": 528,
-    "name": "Paramount Network"
   },
   "PlanetePlus.fr": {
     "id": 407,
@@ -522,10 +510,6 @@
   "BBCEntertainment.uk": {
     "id": 537,
     "name": "BBC Entertainment"
-  },
-  "BET.fr": {
-    "id": 634,
-    "name": "BET"
   },
   "BFMBusiness.fr": {
     "id": 625,
@@ -663,10 +647,6 @@
     "id": 539,
     "name": "LCP"
   },
-  "LCP100.fr": {
-    "id": 624,
-    "name": "LCP 100%"
-  },
   "M6Music.fr": {
     "id": 516,
     "name": "M6 Music"
@@ -783,10 +763,6 @@
     "id": 620,
     "name": "GINX eSports TV"
   },
-  "GameOne.fr": {
-    "id": 475,
-    "name": "Game One"
-  },
   "KTO.fr": {
     "id": 477,
     "name": "KTO"
@@ -806,10 +782,6 @@
   "OLTV.fr": {
     "id": 517,
     "name": "OLTV"
-  },
-  "ParamountChannelDecale.fr": {
-    "id": 531,
-    "name": "Paramount Channel Décalé"
   },
   "PIWI.fr": {
     "id": 514,

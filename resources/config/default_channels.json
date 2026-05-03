@@ -1,6 +1,11 @@
 {
-  "WarnerTV.fr": {"icon": "https://www.digitaltveurope.com/files/2017/09/Warner_TV1.png","name": "WarnerTV"},
-  "PolarPlus.fr": {"alias":  "Polar.fr"},
+  "WarnerTV.fr": {
+    "icon": "https://www.digitaltveurope.com/files/2017/09/Warner_TV1.png",
+    "name": "WarnerTV"
+  },
+  "PolarPlus.fr": {
+    "alias": "Polar.fr"
+  },
   "13eRue.fr": {},
   "2MMonde.fr": {},
   "6ter.fr": {},
@@ -29,7 +34,6 @@
   "beINSPORTSMAX7.fr": {},
   "beINSPORTSMAX8.fr": {},
   "beINSPORTSMAX9.fr": {},
-  "BET.fr": {},
   "BFMBusiness.fr": {},
   "BFMTV.fr": {},
   "Boing.fr": {},
@@ -114,7 +118,6 @@
   "France4.fr": {},
   "France5.fr": {},
   "FranceInfo.fr": {},
-  "GameOne.fr": {},
   "Ginx.fr": {},
   "GolfPlus.fr": {},
   "GongMax.fr": {},
@@ -126,7 +129,6 @@
   "I24news.fr": {},
   "IDF1": {},
   "InfosportPlus.fr": {},
-  "JOne.fr": {},
   "Ketnet": {},
   "KTO.fr": {},
   "KZTV.fr": {},
@@ -151,10 +153,6 @@
   "MezzoLiveHD.fr": {},
   "MirabelleTV.fr": {},
   "MTV.fr": {},
-  "MTVBase.fr": {},
-  "MTVDance.fr": {},
-  "MTVHits.uk": {},
-  "MTVHits.fr": {},
   "MTVRocks.fr": {},
   "NatGeoWild.fr": {},
   "NationalGeographic.fr": {},
@@ -170,7 +168,6 @@
   "Numero23.fr": {},
   "OLTV.fr": {},
   "Onzeo.fr": {},
-  "ParamountChannel.fr": {},
   "ParisPremiere.fr": {},
   "PIWI.fr": {},
   "PlanetePlus.fr": {},
