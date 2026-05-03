@@ -15,8 +15,9 @@ class ChannelsManager
     private int $channelsCount;
     private int $channelsDone;
     private array $events;
+    private array $providerLimits;
 
-    public function __construct(array $channels, Generator $generator)
+    public function __construct(array $channels, Generator $generator, array $providerLimits = ['SFR' => 5])
     {
         $this->channelsCount = count($channels);
         $this->channelsDone = 0;
@@ -26,6 +27,7 @@ class ChannelsManager
         $this->providersUsed = [];
         $this->providersFailedByChannel = [];
         $this->events = [];
+        $this->providerLimits = $providerLimits;
     }
 
     public function addEvent(string $event): void
@@ -61,10 +63,11 @@ class ChannelsManager
         return count($this->channels) > 0;
     }
 
-    //TODO : Add limit in config
     public function canUseProvider(string $provider): bool
     {
-        return !isset($this->providersUsed[$provider]) || count($this->providersUsed[$provider]) == 0;
+        $limit = $this->providerLimits[$provider] ?? 1;
+
+        return !isset($this->providersUsed[$provider]) || count($this->providersUsed[$provider]) < $limit;
     }
 
     public function addChannelToProvider(string $provider, string $channel): void

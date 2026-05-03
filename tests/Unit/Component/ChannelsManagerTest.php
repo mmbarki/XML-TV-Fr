@@ -104,7 +104,7 @@ class ChannelsManagerTest extends TestCase
     }
 
     /**
-     * Test canUseProvider returns false when provider is in use
+     * Test canUseProvider returns false when provider is in use (default limit=1)
      */
     public function testCanUseProviderWhenInUse(): void
     {
@@ -152,6 +152,109 @@ class ChannelsManagerTest extends TestCase
         // Remove second channel - provider now free
         $manager->removeChannelFromProvider('Provider1', 'ch2');
         $this->assertTrue($manager->canUseProvider('Provider1'));
+    }
+
+    /**
+     * Test default limit of 1 blocks provider after a single channel
+     */
+    public function testDefaultLimitIsOneForUnknownProvider(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator, []);
+
+        $this->assertTrue($manager->canUseProvider('SomeProvider'));
+
+        $manager->addChannelToProvider('SomeProvider', 'ch1');
+        $this->assertFalse($manager->canUseProvider('SomeProvider'));
+    }
+
+    /**
+     * Test custom limit allows multiple concurrent uses up to the limit
+     */
+    public function testCustomLimitAllowsMultipleConcurrentUses(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator, ['FastProvider' => 3]);
+
+        $this->assertTrue($manager->canUseProvider('FastProvider'));
+
+        $manager->addChannelToProvider('FastProvider', 'ch1');
+        $this->assertTrue($manager->canUseProvider('FastProvider'));
+
+        $manager->addChannelToProvider('FastProvider', 'ch2');
+        $this->assertTrue($manager->canUseProvider('FastProvider'));
+
+        $manager->addChannelToProvider('FastProvider', 'ch3');
+        $this->assertFalse($manager->canUseProvider('FastProvider'));
+    }
+
+    /**
+     * Test provider becomes available again after a channel is freed below the limit
+     */
+    public function testProviderBecomesAvailableAfterFreeingBelowLimit(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator, ['FastProvider' => 3]);
+
+        $manager->addChannelToProvider('FastProvider', 'ch1');
+        $manager->addChannelToProvider('FastProvider', 'ch2');
+        $manager->addChannelToProvider('FastProvider', 'ch3');
+        $this->assertFalse($manager->canUseProvider('FastProvider'));
+
+        $manager->removeChannelFromProvider('FastProvider', 'ch1');
+        $this->assertTrue($manager->canUseProvider('FastProvider'));
+    }
+
+    /**
+     * Test SFR defaults to limit 5 when no explicit limits are given
+     */
+    public function testSfrDefaultLimitIsFive(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator); // default providerLimits = ['SFR' => 5]
+
+        for ($i = 1; $i <= 5; $i++) {
+            $this->assertTrue($manager->canUseProvider('SFR'), "SFR should accept channel $i (limit=5)");
+            $manager->addChannelToProvider('SFR', "ch$i");
+        }
+
+        $this->assertFalse($manager->canUseProvider('SFR'), 'SFR should be blocked after 5 channels');
+    }
+
+    /**
+     * Test SFR explicit limit override works correctly
+     */
+    public function testSfrLimitCanBeOverridden(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator, ['SFR' => 2]);
+
+        $manager->addChannelToProvider('SFR', 'ch1');
+        $this->assertTrue($manager->canUseProvider('SFR'));
+
+        $manager->addChannelToProvider('SFR', 'ch2');
+        $this->assertFalse($manager->canUseProvider('SFR'), 'SFR should block at custom limit of 2');
+    }
+
+    /**
+     * Test that different providers have independent limits
+     */
+    public function testIndependentLimitsPerProvider(): void
+    {
+        $generator = $this->createMockGenerator();
+        $manager = new ChannelsManager([], $generator, ['ProviderA' => 2, 'ProviderB' => 1]);
+
+        $manager->addChannelToProvider('ProviderA', 'ch1');
+        $this->assertTrue($manager->canUseProvider('ProviderA'));
+        $this->assertTrue($manager->canUseProvider('ProviderB'));
+
+        $manager->addChannelToProvider('ProviderB', 'ch2');
+        $this->assertTrue($manager->canUseProvider('ProviderA'));
+        $this->assertFalse($manager->canUseProvider('ProviderB'));
+
+        $manager->addChannelToProvider('ProviderA', 'ch3');
+        $this->assertFalse($manager->canUseProvider('ProviderA'));
+        $this->assertFalse($manager->canUseProvider('ProviderB'));
     }
 
     /**

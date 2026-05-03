@@ -48,6 +48,8 @@ class Configurator
 
     private array $priorityOrders;
 
+    private array $providerLimits;
+
     private array $guides;
 
     private array $extraParams;
@@ -73,6 +75,7 @@ class Configurator
      * @param array $exportHandlers List of handlers to export the XMLTV (ex: gz, zip, xz, etc.)
      * @param bool $enableDummy Add a dummy EPG if channel not found
      * @param array $priorityOrders Add a custom priority order for a provider globally
+     * @param array $providerLimits Max concurrent uses per provider (e.g. ["SFR" => 5])
      * @param array|string[][] $guides list of xmltv to generate
      */
     public function __construct(
@@ -91,7 +94,8 @@ class Configurator
         int     $minEndTime = 84600, # 23h30
         array   $extraParams = [],
         ?UI   $ui = null,
-        ?string $connectivityCheckUrl = 'https://xmltvfr.fr'
+        ?string $connectivityCheckUrl = 'https://xmltvfr.fr',
+        array   $providerLimits = ['SFR' => 5]
     ) {
         if (isset($timeLimit)) {
             set_time_limit($timeLimit);
@@ -107,6 +111,7 @@ class Configurator
         $this->exportHandlers = $exportHandlers;
         $this->enableDummy = $enableDummy;
         $this->priorityOrders = $priorityOrders;
+        $this->providerLimits = $providerLimits;
         $this->guides = $guides;
         $this->extraParams = $extraParams;
         $this->nbThreads = $nbThreads;
@@ -157,7 +162,8 @@ class Configurator
             $data['min_endtime'] ?? 84600, # 23h30
             $data['extra_params'] ?? [],
             Utils::getUI($data['ui'] ?? 'MultiColumnUI'),
-            array_key_exists('connectivity_check_url', $data) ? $data['connectivity_check_url'] : 'https://xmltvfr.fr'
+            array_key_exists('connectivity_check_url', $data) ? $data['connectivity_check_url'] : 'https://xmltvfr.fr',
+            $data['provider_limits'] ?? ['SFR' => 5]
         );
     }
 
@@ -189,6 +195,14 @@ class Configurator
     public function getPriorityOrders(): array
     {
         return $this->priorityOrders;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProviderLimits(): array
+    {
+        return $this->providerLimits;
     }
 
     /**

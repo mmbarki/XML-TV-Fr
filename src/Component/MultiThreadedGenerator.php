@@ -45,7 +45,7 @@ class MultiThreadedGenerator extends Generator
             $ui = $this->configurator->getUI();
             $channels = Utils::getAllMergedChannels($this->guides);
             $threads = [];
-            $manager = new ChannelsManager($channels, $this);
+            $manager = new ChannelsManager($channels, $this, $this->configurator->getProviderLimits());
             for ($i = 0; $i < $this->configurator->getNbThreads(); $i++) {
                 $threads[] = new ChannelThread($manager, $this);
             }
