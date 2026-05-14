@@ -43,6 +43,11 @@ class ProviderCache
         $this->setContent(json_encode($array));
     }
 
+    public function getLockPath(): string
+    {
+        return self::$PATH.$this->file.'.lock';
+    }
+
     public function setContent(string $content): void
     {
         @mkdir(self::$PATH, 0777, true);

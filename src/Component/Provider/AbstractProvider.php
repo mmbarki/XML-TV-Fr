@@ -125,6 +125,22 @@ abstract class AbstractProvider
             }
         }
 
+        @mkdir(dirname($cache->getLockPath()), 0777, true);
+        $fp = fopen($cache->getLockPath(), 'c');
+        if ($fp !== false) {
+            flock($fp, LOCK_EX);
+            // Another thread may have fetched and cached while we were waiting for the lock
+            if (!$ignoreCache) {
+                $content = $cache->getContent();
+                if (!empty($content)) {
+                    flock($fp, LOCK_UN);
+                    fclose($fp);
+
+                    return $content;
+                }
+            }
+        }
+
         try {
             $response = $this->client->get(
                 $url,
@@ -135,12 +151,27 @@ abstract class AbstractProvider
                 ]
             );
         } catch (ConnectException $e) {
+            if ($fp !== false) {
+                flock($fp, LOCK_UN);
+                fclose($fp);
+            }
+
             throw new NetworkConnectionException('Connection failed: '.$e->getMessage(), 0, $e);
         } catch (\Throwable $e) {
+            if ($fp !== false) {
+                flock($fp, LOCK_UN);
+                fclose($fp);
+            }
+
             return '';
         }
         $content = $decodeEntities ? html_entity_decode($response->getBody()->getContents(), ENT_QUOTES) : $response->getBody()->getContents();
         $cache->setContent($content);
+
+        if ($fp !== false) {
+            flock($fp, LOCK_UN);
+            fclose($fp);
+        }
 
         return $content;
     }
