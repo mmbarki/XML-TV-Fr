@@ -132,6 +132,8 @@ class MultiThreadedGeneratorTest extends TestCase
         $generator = new MultiThreadedGenerator($config);
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -162,6 +164,8 @@ class MultiThreadedGeneratorTest extends TestCase
         $generator = new MultiThreadedGenerator(new Configurator());
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -189,6 +193,8 @@ class MultiThreadedGeneratorTest extends TestCase
         $generator = new MultiThreadedGenerator(new Configurator());
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -302,9 +308,13 @@ class MultiThreadedGeneratorTest extends TestCase
         $generator = new MultiThreadedGenerator(new Configurator());
 
         $provider1 = $this->createMock(ProviderInterface::class);
+
+        $provider1->method('getInstancePriority')->willReturn(0.0);
         $provider1->method('channelExists')->willReturn(true);
 
         $provider2 = $this->createMock(ProviderInterface::class);
+
+        $provider2->method('getInstancePriority')->willReturn(0.0);
         $provider2->method('channelExists')
             ->willReturnCallback(fn ($ch) => $ch === 'ch2');
 

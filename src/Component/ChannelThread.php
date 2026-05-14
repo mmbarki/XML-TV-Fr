@@ -81,7 +81,40 @@ class ChannelThread
             });
         }
 
-        return $providers;
+        return $this->shuffleSamePriorityProviders(array_values($providers));
+    }
+
+    /**
+     * Shuffle providers within each priority tier so the load is spread evenly
+     * among providers of equal quality instead of always favouring the same one.
+     *
+     * @param ProviderInterface[] $providers Already sorted descending by priority
+     * @return ProviderInterface[]
+     */
+    private function shuffleSamePriorityProviders(array $providers): array
+    {
+        if (count($providers) <= 1) {
+            return $providers;
+        }
+        $result = [];
+        $currentGroup = [];
+        $currentPriority = null;
+        foreach ($providers as $provider) {
+            $priority = $provider->getInstancePriority();
+            if ($currentPriority === null || $priority === $currentPriority) {
+                $currentPriority = $priority;
+                $currentGroup[] = $provider;
+            } else {
+                shuffle($currentGroup);
+                array_push($result, ...$currentGroup);
+                $currentGroup = [$provider];
+                $currentPriority = $priority;
+            }
+        }
+        shuffle($currentGroup);
+        array_push($result, ...$currentGroup);
+
+        return $result;
     }
 
     private function getLastMessage(Channel $workerChannel): ?string
@@ -189,15 +222,32 @@ class ChannelThread
             }
         } else {
             $providers = $this->getRemainingProviders();
+            $topPriority = null;
+            $usedAnyProvider = false;
+            $skippedBusyAtTopTier = false;
             foreach ($providers as $provider) {
                 $providerName = Utils::extractProviderName($provider);
-                if (!$this->manager->canUseProvider($providerName)) {
-                    return ['skipped' => true];
-                } else {
-                    $this->manager->addChannelToProvider($providerName, $this->channel);
-                    $this->provider = $providerName;
-                    $this->hasStarted = true;
+                $priority = $provider->getInstancePriority();
+                if ($topPriority === null) {
+                    $topPriority = $priority;
                 }
+                if ($priority < $topPriority && (!$usedAnyProvider || $skippedBusyAtTopTier)) {
+                    // At least one top-tier provider is untested (busy); don't fall through to lower ones
+                    return ['skipped' => true];
+                }
+                if (!$this->manager->canUseProvider($providerName)) {
+                    if ($priority === $topPriority) {
+                        $skippedBusyAtTopTier = true;
+
+                        continue; // Another same-priority provider may be free
+                    }
+
+                    return ['skipped' => true]; // Lower-priority provider busy: re-queue
+                }
+                $usedAnyProvider = true;
+                $this->manager->addChannelToProvider($providerName, $this->channel);
+                $this->provider = $providerName;
+                $this->hasStarted = true;
                 $this->status = Utils::colorize('En cours...', 'magenta');
 
                 $result = $this->getDataFromProvider($providerName, $provider, $date, $cacheKey);
@@ -207,6 +257,15 @@ class ChannelThread
                 if (!@$currentResult['isPartial'] && $result['success']) {
                     return $currentResult;
                 }
+            }
+            if (!$usedAnyProvider && $topPriority !== null) {
+                return ['skipped' => true]; // All top-priority providers were busy
+            }
+            // Some providers were tried (and failed) while others at the same tier were busy.
+            // Re-queue so the busy ones get a chance; failedProviders ensures the tried ones
+            // are excluded on the next attempt.
+            if ($skippedBusyAtTopTier && !($currentResult['success'] ?? false)) {
+                return ['skipped' => true];
             }
         }
 

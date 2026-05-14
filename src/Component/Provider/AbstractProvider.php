@@ -59,6 +59,11 @@ abstract class AbstractProvider
         return self::$priority[static::class];
     }
 
+    public function getInstancePriority(): float
+    {
+        return static::getPriority();
+    }
+
     public function setStatus(string $status): void
     {
         $this->workerChannel?->send($status);

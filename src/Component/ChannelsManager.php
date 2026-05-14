@@ -34,6 +34,7 @@ class ChannelsManager
     {
         $this->events[] = $event;
     }
+
     public function getLatestEvents(int $number): array
     {
         $slice = min(count($this->events), $number);
@@ -45,10 +46,12 @@ class ChannelsManager
     {
         $this->channelsDone++;
     }
+
     public function getStatus(): string
     {
         return $this->channelsDone.' / '.$this->channelsCount;
     }
+
     public function removeChannelFromProvider(string $provider, string $channel): void
     {
         if (isset($this->providersUsed[$provider])) {
@@ -90,6 +93,12 @@ class ChannelsManager
         $this->datesGatheredByChannel[$channel] = $datesGathered;
     }
 
+    /**
+     * A channel is available if at least one provider at the top priority level
+     * (that supports this channel and hasn't failed) is currently free.
+     * Same-priority busy providers are skipped; a lower-priority tier is only
+     * reached when all providers at the top tier have actually failed.
+     */
     private function isChannelAvailable(string $key): bool
     {
         $info = $this->channelsInfo[$key] ?? [];
@@ -100,21 +109,29 @@ class ChannelsManager
         } else {
             $failedProviders = [];
         }
+        $topPriority = null;
         foreach ($providers as $provider) {
             if (in_array($provider, $failedProviders)) {
                 continue;
             }
-            $providerClass = Utils::extractProviderName($provider);
             if (!$provider->channelExists($key)) {
                 continue;
-            } elseif (!$this->canUseProvider($providerClass)) {
+            }
+            $priority = $provider->getInstancePriority();
+            if ($topPriority === null) {
+                $topPriority = $priority;
+            } elseif ($priority < $topPriority) {
+                // All same-priority providers at the top tier were busy
                 return false;
-            } else {
+            }
+            $providerClass = Utils::extractProviderName($provider);
+            if ($this->canUseProvider($providerClass)) {
                 return true;
             }
         }
 
-        return true;
+        // No applicable providers found → let it proceed; all top-tier busy → block
+        return $topPriority === null;
     }
 
     public function shiftChannel(): array

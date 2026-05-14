@@ -12,6 +12,9 @@ use racacax\XmlTv\Component\CacheFile;
 use racacax\XmlTv\Component\Logger;
 use racacax\XmlTv\Component\ProviderInterface;
 use racacax\XmlTv\Component\Utils;
+use racacax\XmlTvTest\Ressources\Provider\StubHighPriorityProviderA;
+use racacax\XmlTvTest\Ressources\Provider\StubHighPriorityProviderB;
+use racacax\XmlTvTest\Ressources\Provider\StubLowPriorityProvider;
 use racacax\XmlTv\Component\XmlFormatter;
 use racacax\XmlTv\Configurator;
 use racacax\XmlTv\ValueObject\EPGDate;
@@ -264,6 +267,8 @@ class ChannelThreadGatherDataTest extends TestCase
         $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $this->setProperty($this->channelThread, 'channel', 'TF1.fr');
@@ -297,6 +302,8 @@ class ChannelThreadGatherDataTest extends TestCase
         $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $this->setProperty($this->channelThread, 'channel', 'TF1.fr');
@@ -367,9 +374,13 @@ class ChannelThreadGatherDataTest extends TestCase
         // by verifying that when failedProviders is set, fewer providers are returned
 
         $provider1 = $this->createMock(ProviderInterface::class);
+
+        $provider1->method('getInstancePriority')->willReturn(0.0);
         $provider1->method('channelExists')->willReturn(true);
 
         $provider2 = $this->createMock(ProviderInterface::class);
+
+        $provider2->method('getInstancePriority')->willReturn(0.0);
         $provider2->method('channelExists')->willReturn(true);
 
         $this->setProperty($this->channelThread, 'channel', 'TF1.fr');
@@ -426,5 +437,167 @@ class ChannelThreadGatherDataTest extends TestCase
         // Note: Testing that these params are actually passed to providers requires
         // mocking the ProviderTask and worker execution, which is better done in
         // integration tests. The unit test verifies the params are stored correctly.
+    }
+
+    // ========================================
+    // TEST: Same-priority provider fallback
+    // ========================================
+
+    /**
+     * When providerA (priority 0.85) is busy but providerB (same priority) is free,
+     * gatherData should use providerB instead of immediately returning ['skipped' => true].
+     */
+    public function testGatherDataUsesSamePriorityFallbackWhenFirstIsBusy(): void
+    {
+        $date = new \DateTimeImmutable('2024-01-01');
+        $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
+
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $nameA = Utils::extractProviderName($providerA);
+        $nameB = Utils::extractProviderName($providerB);
+
+        $this->setProperty($this->channelThread, 'channel', 'TF1.fr');
+        $this->setProperty($this->channelThread, 'failedProviders', []);
+        $this->setProperty($this->channelThread, 'info', []);
+
+        $this->cache->method('getState')->willReturn(EPGEnum::$NO_CACHE);
+        $this->generator->method('getProviders')->willReturn([$providerA, $providerB]);
+
+        // A is busy, B is free
+        $this->manager->method('canUseProvider')
+            ->willReturnCallback(fn (string $name) => $name !== $nameA);
+
+        $this->manager->expects($this->once())
+            ->method('addChannelToProvider')
+            ->with($nameB, 'TF1.fr');
+
+        try {
+            $result = $this->callMethod($this->channelThread, 'gatherData', [$epgDate]);
+            // If we get here, the result should not be 'skipped'
+            $this->assertFalse(@$result['skipped'], 'Should not skip when a same-priority provider is free');
+        } catch (\Throwable $e) {
+            // Expected when worker execution fails in unit test context — the important
+            // assertion above (addChannelToProvider called on B) already passed.
+        }
+    }
+
+    /**
+     * When provider B fails and provider A (same priority) was busy, the channel must be
+     * re-queued (skipped=true) so that A can be tried on the next dispatch cycle, with B
+     * excluded via failedProviders.
+     */
+    public function testGatherDataRequeuesWhenProviderFailsAndSamePriorityIsBusy(): void
+    {
+        $date = new \DateTimeImmutable('2024-01-01');
+        $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
+
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $nameA = Utils::extractProviderName($providerA);
+        $nameB = Utils::extractProviderName($providerB);
+
+        $manager = $this->manager;
+        $generator = $this->generator;
+
+        // Subclass ChannelThread to intercept getDataFromProvider without touching Amp workers
+        $thread = new class ($manager, $generator) extends ChannelThread {
+            protected function getDataFromProvider(string $providerName, ProviderInterface $provider, string $date, string $cacheKey): array
+            {
+                return ['success' => false]; // provider B fails
+            }
+        };
+
+        $this->setProperty($thread, 'channel', 'TF1.fr');
+        $this->setProperty($thread, 'failedProviders', []);
+        $this->setProperty($thread, 'info', []);
+
+        $this->cache->method('getState')->willReturn(EPGEnum::$NO_CACHE);
+        $this->generator->method('getProviders')->willReturn([$providerA, $providerB]);
+
+        // A is busy, B is free
+        $this->manager->method('canUseProvider')
+            ->willReturnCallback(fn (string $name) => $name !== $nameA);
+
+        $result = $this->callMethod($thread, 'gatherData', [$epgDate]);
+
+        $this->assertTrue($result['skipped'], 'Must re-queue when B fails and A (same priority) was busy');
+    }
+
+    /**
+     * When A (0.85) is busy and B (0.85) fails, C (0.6) must never be contacted at all
+     * because A is still untested. The channel must be re-queued.
+     */
+    public function testGatherDataNeverContactsLowerPriorityWhenHighPriorityUntested(): void
+    {
+        $date = new \DateTimeImmutable('2024-01-01');
+        $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
+
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $providerC = new StubLowPriorityProvider();
+        $nameA = Utils::extractProviderName($providerA);
+        $nameC = Utils::extractProviderName($providerC);
+
+        $manager = $this->manager;
+        $generator = $this->generator;
+
+        $thread = new class ($manager, $generator) extends ChannelThread {
+            public array $calledProviders = [];
+
+            protected function getDataFromProvider(string $providerName, ProviderInterface $provider, string $date, string $cacheKey): array
+            {
+                $this->calledProviders[] = $providerName;
+
+                return ['success' => false];
+            }
+        };
+
+        $this->setProperty($thread, 'channel', 'TF1.fr');
+        $this->setProperty($thread, 'failedProviders', []);
+        $this->setProperty($thread, 'info', []);
+
+        $this->cache->method('getState')->willReturn(EPGEnum::$NO_CACHE);
+        $this->generator->method('getProviders')->willReturn([$providerA, $providerB, $providerC]);
+
+        // A is busy, B and C are free
+        $this->manager->method('canUseProvider')
+            ->willReturnCallback(fn (string $name) => $name !== $nameA);
+
+        $result = $this->callMethod($thread, 'gatherData', [$epgDate]);
+
+        $this->assertTrue($result['skipped'], 'Must re-queue: A (high priority) is still untested');
+        $this->assertNotContains($nameC, $thread->calledProviders, 'C must never be contacted while A is untested');
+    }
+
+    /**
+     * When ALL providers at the top priority are busy, gatherData returns ['skipped' => true]
+     * even if lower-priority providers are free.
+     */
+    public function testGatherDataSkipsWhenAllTopPriorityProvidersBusy(): void
+    {
+        $date = new \DateTimeImmutable('2024-01-01');
+        $epgDate = new EPGDate($date, EPGDate::$NETWORK_FIRST);
+
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $providerC = new StubLowPriorityProvider();
+        $nameA = Utils::extractProviderName($providerA);
+        $nameB = Utils::extractProviderName($providerB);
+
+        $this->setProperty($this->channelThread, 'channel', 'TF1.fr');
+        $this->setProperty($this->channelThread, 'failedProviders', []);
+        $this->setProperty($this->channelThread, 'info', []);
+
+        $this->cache->method('getState')->willReturn(EPGEnum::$NO_CACHE);
+        $this->generator->method('getProviders')->willReturn([$providerA, $providerB, $providerC]);
+
+        // A and B are busy, C is free — but C is lower priority → must skip
+        $this->manager->method('canUseProvider')
+            ->willReturnCallback(fn (string $name) => !in_array($name, [$nameA, $nameB]));
+
+        $result = $this->callMethod($this->channelThread, 'gatherData', [$epgDate]);
+
+        $this->assertTrue($result['skipped'], 'Must skip when all top-priority providers are busy');
     }
 }

@@ -113,12 +113,17 @@ class ChannelThreadTest extends TestCase
     public function testGetRemainingProvidersFiltersFailedProviders(): void
     {
         $provider1 = $this->createMock(ProviderInterface::class);
+        $provider1->method('getInstancePriority')->willReturn(0.0);
         $provider1->method('channelExists')->willReturn(true);
 
         $provider2 = $this->createMock(ProviderInterface::class);
+
+        $provider2->method('getInstancePriority')->willReturn(0.0);
         $provider2->method('channelExists')->willReturn(true);
 
         $provider3 = $this->createMock(ProviderInterface::class);
+
+        $provider3->method('getInstancePriority')->willReturn(0.0);
         $provider3->method('channelExists')->willReturn(false);
 
         $allProviders = [$provider1, $provider2, $provider3];
@@ -144,6 +149,7 @@ class ChannelThreadTest extends TestCase
     public function testGetRemainingProvidersRespectsChannelPriority(): void
     {
         $provider1 = $this->createMock(ProviderInterface::class);
+        $provider1->method('getInstancePriority')->willReturn(0.0);
         $provider1->method('channelExists')->willReturn(true);
 
         $this->generator->method('getProviders')

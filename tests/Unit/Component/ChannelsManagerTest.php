@@ -8,7 +8,12 @@ use PHPUnit\Framework\TestCase;
 use racacax\XmlTv\Component\ChannelsManager;
 use racacax\XmlTv\Component\Generator;
 use racacax\XmlTv\Component\ProviderInterface;
+use racacax\XmlTv\Component\Utils;
 use racacax\XmlTv\Configurator;
+use racacax\XmlTvTest\Ressources\Provider\StubHighPriorityProviderA;
+use racacax\XmlTvTest\Ressources\Provider\StubHighPriorityProviderB;
+use racacax\XmlTvTest\Ressources\Provider\StubHighPriorityProviderNoChannel;
+use racacax\XmlTvTest\Ressources\Provider\StubLowPriorityProvider;
 
 class ChannelsManagerTest extends TestCase
 {
@@ -38,6 +43,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -60,6 +67,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -266,6 +275,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -369,6 +380,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -417,6 +430,7 @@ class ChannelsManagerTest extends TestCase
 
         // Provider that supports all channels
         $provider = $this->createMock(ProviderInterface::class);
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -440,6 +454,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -467,6 +483,8 @@ class ChannelsManagerTest extends TestCase
         $generator = $this->createMockGenerator();
 
         $provider = $this->createMock(ProviderInterface::class);
+
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
         $generator->setProviders([$provider]);
 
@@ -483,9 +501,12 @@ class ChannelsManagerTest extends TestCase
     {
         // Create two providers
         $provider1 = $this->createMock(ProviderInterface::class);
+        $provider1->method('getInstancePriority')->willReturn(0.0);
         $provider1->method('channelExists')->willReturn(true);
 
         $provider2 = $this->createMock(ProviderInterface::class);
+
+        $provider2->method('getInstancePriority')->willReturn(0.0);
         $provider2->method('channelExists')->willReturn(true);
 
         // Create a generator with both providers
@@ -524,6 +545,7 @@ class ChannelsManagerTest extends TestCase
     public function testIsChannelAvailableWithNoPriority(): void
     {
         $provider = $this->createMock(ProviderInterface::class);
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $config = new Configurator();
@@ -552,6 +574,7 @@ class ChannelsManagerTest extends TestCase
     public function testMultipleChannelsWithDifferentPriorities(): void
     {
         $provider = $this->createMock(ProviderInterface::class);
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $config = new Configurator();
@@ -591,6 +614,7 @@ class ChannelsManagerTest extends TestCase
     public function testRequeuedChannelPreservesPriority(): void
     {
         $provider = $this->createMock(ProviderInterface::class);
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $config = new Configurator();
@@ -621,6 +645,7 @@ class ChannelsManagerTest extends TestCase
     public function testChannelWithEmptyPriorityArray(): void
     {
         $provider = $this->createMock(ProviderInterface::class);
+        $provider->method('getInstancePriority')->willReturn(0.0);
         $provider->method('channelExists')->willReturn(true);
 
         $config = new Configurator();
@@ -679,5 +704,70 @@ class ChannelsManagerTest extends TestCase
             ->willReturn(new Configurator());
 
         return $generator;
+    }
+
+    /**
+     * When two providers share the same priority and the first is busy,
+     * the channel should still be considered available via the second one.
+     */
+    public function testIsChannelAvailableWhenFirstSamePriorityProviderBusy(): void
+    {
+        $generator = $this->createMockGenerator();
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $generator->setProviders([$providerA, $providerB]);
+
+        $channels = ['ch1' => []];
+        $manager = new ChannelsManager($channels, $generator);
+
+        $manager->addChannelToProvider(Utils::extractProviderName($providerA), 'other-channel');
+
+        // Despite providerA being busy, providerB (same priority) is free → available
+        $channelData = $manager->shiftChannel();
+        $this->assertNotEmpty($channelData);
+        $this->assertEquals('ch1', $channelData['key']);
+    }
+
+    /**
+     * When all providers at the top priority are busy, the channel is not available
+     * even if lower-priority providers are free.
+     */
+    public function testIsChannelNotAvailableWhenAllTopPriorityBusy(): void
+    {
+        $generator = $this->createMockGenerator();
+        $providerA = new StubHighPriorityProviderA();
+        $providerB = new StubHighPriorityProviderB();
+        $providerC = new StubLowPriorityProvider();
+        $generator->setProviders([$providerA, $providerB, $providerC]);
+
+        $channels = ['ch1' => []];
+        $manager = new ChannelsManager($channels, $generator);
+
+        // Both top-priority providers are busy; C (lower priority) is free
+        $manager->addChannelToProvider(Utils::extractProviderName($providerA), 'other-ch');
+        $manager->addChannelToProvider(Utils::extractProviderName($providerB), 'other-ch2');
+
+        $channelData = $manager->shiftChannel();
+        $this->assertEmpty($channelData, 'Channel should wait for a top-priority provider');
+    }
+
+    /**
+     * A lower-priority provider is only used after all top-priority providers have failed
+     * (not merely because they are busy).
+     */
+    public function testLowerPriorityProviderUsedAfterTopFails(): void
+    {
+        $generator = $this->createMockGenerator();
+        $providerHigh = new StubHighPriorityProviderNoChannel(); // does NOT support ch1
+        $providerLow  = new StubLowPriorityProvider();            // supports ch1
+        $generator->setProviders([$providerHigh, $providerLow]);
+
+        $channels = ['ch1' => []];
+        $manager = new ChannelsManager($channels, $generator);
+
+        // providerHigh doesn't support ch1, so providerLow is tried next → available
+        $channelData = $manager->shiftChannel();
+        $this->assertNotEmpty($channelData);
+        $this->assertEquals('ch1', $channelData['key']);
     }
 }
