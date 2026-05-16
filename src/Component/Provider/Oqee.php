@@ -71,7 +71,7 @@ class Oqee extends AbstractProvider implements ProviderInterface
                 $icon = str_replace('h%d', 'h1080', @$entry['pictures']['main'] ?? '');
                 $program->addIcon($icon);
                 $program->setRating('-'. $entry['live']['parental_rating']);
-                if ($entry['live']['audio_description']) {
+                if (@$entry['live']['audio_description']) {
                     $program->setAudioDescribed();
                 }
                 $channelObj->addProgram($program);

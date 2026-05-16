@@ -37,7 +37,7 @@
   "CanalPlusCinema.fr": {
     "page": 1,
     "id": "33",
-    "alt": "Canal+ Cin\u00e9ma(s)"
+    "alt": "Canal+ Cinéma(s)"
   },
   "CanalPlusSport.fr": {
     "page": 1,
@@ -47,7 +47,7 @@
   "CanalPlusSeries.fr": {
     "page": 1,
     "id": "1563",
-    "alt": "Canal+ S\u00e9ries"
+    "alt": "Canal+ Séries"
   },
   "CanalPlusKIDS.fr": {
     "page": 1,
@@ -57,7 +57,7 @@
   "ParisPremiere.fr": {
     "page": 1,
     "id": "145",
-    "alt": "Paris Premi\u00e8re"
+    "alt": "Paris Première"
   },
   "TvBreizh.fr": {
     "page": 2,
@@ -102,7 +102,7 @@
   "TF1SeriesFilms.fr": {
     "page": 2,
     "id": "1404",
-    "alt": "TF1 S\u00e9ries Films"
+    "alt": "TF1 Séries Films"
   },
   "6ter.fr": {
     "page": 2,
@@ -117,7 +117,7 @@
   "RMCDecouverte.fr": {
     "page": 3,
     "id": "1400",
-    "alt": "RMC D\u00e9couverte"
+    "alt": "RMC Découverte"
   },
   "Cherie25.fr": {
     "page": 3,
@@ -127,7 +127,7 @@
   "ComediePlus.fr": {
     "page": 3,
     "id": "54",
-    "alt": "Com\u00e9die+"
+    "alt": "Comédie+"
   },
   "PolarPlus.fr": {
     "page": 3,
@@ -162,7 +162,7 @@
   "Teva.fr": {
     "page": 3,
     "id": "191",
-    "alt": "T\u00e9va"
+    "alt": "Téva"
   },
   "AB1.fr": {
     "page": 3,
@@ -184,11 +184,6 @@
     "id": "405",
     "alt": "E !"
   },
-  "BET.fr": {
-    "page": 4,
-    "id": "1960",
-    "alt": "BET"
-  },
   "ComedyCentral.fr": {
     "page": 4,
     "id": "2752",
@@ -202,42 +197,37 @@
   "CinePlusPremier.fr": {
     "page": 4,
     "id": "282",
-    "alt": "Cin\u00e9+ Premier"
+    "alt": "Ciné+ Premier"
   },
   "CinePlusFrisson.fr": {
     "page": 4,
     "id": "284",
-    "alt": "Cin\u00e9+ Frisson"
+    "alt": "Ciné+ Frisson"
   },
   "CinePlusEmotion.fr": {
     "page": 4,
     "id": "283",
-    "alt": "Cin\u00e9+ Emotion"
+    "alt": "Ciné+ Emotion"
   },
   "CinePlusFamiz.fr": {
     "page": 4,
     "id": "401",
-    "alt": "Cin\u00e9+ Famiz"
+    "alt": "Ciné+ Famiz"
   },
   "CinePlusClub.fr": {
     "page": 5,
     "id": "285",
-    "alt": "Cin\u00e9+Club"
+    "alt": "Ciné+Club"
   },
   "CinePlusClassic.fr": {
     "page": 5,
     "id": "287",
-    "alt": "Cin\u00e9+ Classic"
+    "alt": "Ciné+ Classic"
   },
   "TCM.fr": {
     "page": 5,
     "id": "185",
-    "alt": "TCM Cin\u00e9ma"
-  },
-  "ParamountChannel.fr": {
-    "page": 5,
-    "id": "1562",
-    "alt": "Paramount Channel"
+    "alt": "TCM Cinéma"
   },
   "Action.fr": {
     "page": 5,
@@ -267,17 +257,17 @@
   "PlanetePlus.fr": {
     "page": 5,
     "id": "147",
-    "alt": "Plan\u00e8te+"
+    "alt": "Planète+"
   },
   "PLANETEJustice.fr": {
     "page": 5,
     "id": "662",
-    "alt": "Plan\u00e8te+ Crime Investigation"
+    "alt": "Planète+ Crime Investigation"
   },
   "PlaneteAction.fr": {
     "page": 6,
     "id": "402",
-    "alt": "Plan\u00e8te+ Aventure & Exp\u00e9rience"
+    "alt": "Planète+ Aventure & Expérience"
   },
   "NationalGeographic.fr": {
     "page": 6,
@@ -292,7 +282,7 @@
   "UshuaiaTV.fr": {
     "page": 6,
     "id": "451",
-    "alt": "Ushua\u00efa TV"
+    "alt": "Ushuaïa TV"
   },
   "Histoire.fr": {
     "page": 6,
@@ -342,7 +332,7 @@
   "ChasseEtPeche.fr": {
     "page": 7,
     "id": "38",
-    "alt": "Chasse et p\u00eache"
+    "alt": "Chasse et pêche"
   },
   "Animaux.fr": {
     "page": 7,
@@ -382,12 +372,12 @@
   "LaChaineParlementaire.fr": {
     "page": 7,
     "id": "234",
-    "alt": "La Cha\u00eene parlementaire"
+    "alt": "La Chaîne parlementaire"
   },
   "LCI.fr": {
     "page": 7,
     "id": "112",
-    "alt": "LCI - La Cha\u00eene Info"
+    "alt": "LCI - La Chaîne Info"
   },
   "CNews.fr": {
     "page": 7,
@@ -599,16 +589,6 @@
     "id": "2040",
     "alt": "Warner TV Next"
   },
-  "JOne.fr": {
-    "page": 12,
-    "id": "1585",
-    "alt": "J-One"
-  },
-  "GameOne.fr": {
-    "page": 12,
-    "id": "87",
-    "alt": "Game One"
-  },
   "Mangas.fr": {
     "page": 12,
     "id": "6",
@@ -617,7 +597,7 @@
   "Nickelodeon.fr": {
     "page": 12,
     "id": "473",
-    "alt": "Nickelod\u00e9on"
+    "alt": "Nickelodéon"
   },
   "NickelodeonJunior.fr": {
     "page": 12,
@@ -627,7 +607,7 @@
   "TeleToonPlus.fr": {
     "page": 12,
     "id": "197",
-    "alt": "T\u00e9l\u00e9Toon+"
+    "alt": "TéléToon+"
   },
   "CartoonNetwork.fr": {
     "page": 12,
@@ -787,12 +767,12 @@
   "BeCine.be": {
     "page": 15,
     "id": "417",
-    "alt": "Be Cin\u00e9"
+    "alt": "Be Ciné"
   },
   "BeSeries.be": {
     "page": 15,
     "id": "418",
-    "alt": "Be S\u00e9ries"
+    "alt": "Be Séries"
   },
   "BX1.be": {
     "page": 15,
@@ -822,17 +802,17 @@
   "CinePlusClassic.be": {
     "page": 16,
     "id": "437",
-    "alt": "Cin\u00e9+ Classic Belgique"
+    "alt": "Ciné+ Classic Belgique"
   },
   "CinePlusFrisson.be": {
     "page": 16,
     "id": "317",
-    "alt": "Cin\u00e9+ Frisson Belgique"
+    "alt": "Ciné+ Frisson Belgique"
   },
   "CinePlusPremier.be": {
     "page": 16,
     "id": "294",
-    "alt": "Cin\u00e9+ Premier Belgique"
+    "alt": "Ciné+ Premier Belgique"
   },
   "ClubRTL.be": {
     "page": 16,
@@ -847,7 +827,7 @@
   "een.be": {
     "page": 16,
     "id": "23",
-    "alt": "\u00e9\u00e9n"
+    "alt": "één"
   },
   "ElevenSports1FR.be": {
     "page": 16,
@@ -867,12 +847,12 @@
   "Nickelodeon.be": {
     "page": 16,
     "id": "1968",
-    "alt": "Nickelod\u00e9on Wallonia"
+    "alt": "Nickelodéon Wallonia"
   },
   "NoTele.be": {
     "page": 16,
     "id": "1833",
-    "alt": "NoT\u00e9l\u00e9"
+    "alt": "NoTélé"
   },
   "NickJr.be": {
     "page": 16,
@@ -907,17 +887,17 @@
   "RTC.be": {
     "page": 17,
     "id": "390",
-    "alt": "RTC T\u00e9l\u00e9 Li\u00e8ge"
+    "alt": "RTC Télé Liège"
   },
   "TeleMB.be": {
     "page": 17,
     "id": "387",
-    "alt": "T\u00e9l\u00e9 MB"
+    "alt": "Télé MB"
   },
   "TeleSambre.be": {
     "page": 17,
     "id": "383",
-    "alt": "T\u00e9l\u00e9 Sambre"
+    "alt": "Télé Sambre"
   },
   "TVCom.be": {
     "page": 17,
@@ -992,12 +972,12 @@
   "Telenantes.fr": {
     "page": 18,
     "id": "491",
-    "alt": "T\u00e9l\u00e9nantes"
+    "alt": "Télénantes"
   },
   "TeleLyonMetropole.fr": {
     "page": 18,
     "id": "116",
-    "alt": "BFM Lyon M\u00e9tropole"
+    "alt": "BFM Lyon Métropole"
   },
   "TVSUDMarseille.fr": {
     "page": 19,
@@ -1007,12 +987,12 @@
   "ViaOccitanieMontpellier.fr": {
     "page": 19,
     "id": "704",
-    "alt": "Vi\u00e0 Occitanie Montpellier"
+    "alt": "Vià Occitanie Montpellier"
   },
   "TVSUDNimes.fr": {
     "page": 19,
     "id": "538",
-    "alt": "Vi\u00e0 Occitanie Pays Gardois"
+    "alt": "Vià Occitanie Pays Gardois"
   },
   "TVTours.fr": {
     "page": 19,
@@ -1027,12 +1007,12 @@
   "MaTele.be": {
     "page": 19,
     "id": "393",
-    "alt": "MAt\u00e9l\u00e9"
+    "alt": "MAtélé"
   },
   "AntenneReunion.fr": {
     "page": 19,
     "id": "436",
-    "alt": "Antenne R\u00e9union"
+    "alt": "Antenne Réunion"
   },
   "ATVGuadeloupe.fr": {
     "page": 19,
@@ -1052,27 +1032,27 @@
   "Guadeloupe1.fr": {
     "page": 19,
     "id": "329",
-    "alt": "Guadeloupe la 1\u00e8re"
+    "alt": "Guadeloupe la 1ère"
   },
   "Guyane1.fr": {
     "page": 19,
     "id": "260",
-    "alt": "Guyane la 1\u00e8re"
+    "alt": "Guyane la 1ère"
   },
   "Martinique1.fr": {
     "page": 20,
     "id": "328",
-    "alt": "Martinique la 1\u00e8re"
+    "alt": "Martinique la 1ère"
   },
   "Mayotte1.fr": {
     "page": 20,
     "id": "1080",
-    "alt": "Mayotte la 1\u00e8re"
+    "alt": "Mayotte la 1ère"
   },
   "NouvelleCaledonie.fr": {
     "page": 20,
     "id": "240",
-    "alt": "Nouvelle-Cal\u00e9donie la 1\u00e8re"
+    "alt": "Nouvelle-Calédonie la 1ère"
   },
   "CanalPlusAntilles.fr": {
     "page": 20,
@@ -1082,17 +1062,17 @@
   "Reunion1.fr": {
     "page": 20,
     "id": "245",
-    "alt": "R\u00e9union la1\u00e8re"
+    "alt": "Réunion la1ère"
   },
   "StPierreEtMiquelon1.fr": {
     "page": 20,
     "id": "1094",
-    "alt": "Saint-Pierre et Miquelon la 1\u00e8re"
+    "alt": "Saint-Pierre et Miquelon la 1ère"
   },
   "WallisEtFutuna1.fr": {
     "page": 20,
     "id": "519",
-    "alt": "Wallis et Futuna la 1\u00e8re"
+    "alt": "Wallis et Futuna la 1ère"
   },
   "XXL.fr": {
     "page": 20,
@@ -1167,12 +1147,12 @@
   "France3CotedAzur.fr": {
     "page": 21,
     "id": "1931",
-    "alt": "France 3 C\u00f4te d'Azur"
+    "alt": "France 3 Côte d'Azur"
   },
   "France3FrancheComte.fr": {
     "page": 21,
     "id": "1932",
-    "alt": "France 3 Franche-Comt\u00e9"
+    "alt": "France 3 Franche-Comté"
   },
   "France3Languedoc.fr": {
     "page": 21,
@@ -1192,7 +1172,7 @@
   "France3MidiPyrenees.fr": {
     "page": 22,
     "id": "1937",
-    "alt": "France 3 Midi-Pyr\u00e9n\u00e9es"
+    "alt": "France 3 Midi-Pyrénées"
   },
   "France3NordPasDeCalais.fr": {
     "page": 22,
@@ -1237,7 +1217,7 @@
   "France3RhoneAlpes.fr": {
     "page": 22,
     "id": "1944",
-    "alt": "France 3 Rh\u00f4ne-Alpes"
+    "alt": "France 3 Rhône-Alpes"
   },
   "CanalPlusDocs.fr": {
     "id": 3347,

@@ -15,8 +15,9 @@ class ChannelsManager
     private int $channelsCount;
     private int $channelsDone;
     private array $events;
+    private array $providerLimits;
 
-    public function __construct(array $channels, Generator $generator)
+    public function __construct(array $channels, Generator $generator, array $providerLimits = ['SFR' => 5])
     {
         $this->channelsCount = count($channels);
         $this->channelsDone = 0;
@@ -26,12 +27,14 @@ class ChannelsManager
         $this->providersUsed = [];
         $this->providersFailedByChannel = [];
         $this->events = [];
+        $this->providerLimits = $providerLimits;
     }
 
     public function addEvent(string $event): void
     {
         $this->events[] = $event;
     }
+
     public function getLatestEvents(int $number): array
     {
         $slice = min(count($this->events), $number);
@@ -43,10 +46,12 @@ class ChannelsManager
     {
         $this->channelsDone++;
     }
+
     public function getStatus(): string
     {
         return $this->channelsDone.' / '.$this->channelsCount;
     }
+
     public function removeChannelFromProvider(string $provider, string $channel): void
     {
         if (isset($this->providersUsed[$provider])) {
@@ -61,10 +66,11 @@ class ChannelsManager
         return count($this->channels) > 0;
     }
 
-    //TODO : Add limit in config
     public function canUseProvider(string $provider): bool
     {
-        return !isset($this->providersUsed[$provider]) || count($this->providersUsed[$provider]) == 0;
+        $limit = $this->providerLimits[$provider] ?? 1;
+
+        return !isset($this->providersUsed[$provider]) || count($this->providersUsed[$provider]) < $limit;
     }
 
     public function addChannelToProvider(string $provider, string $channel): void
@@ -87,30 +93,45 @@ class ChannelsManager
         $this->datesGatheredByChannel[$channel] = $datesGathered;
     }
 
+    /**
+     * A channel is available if at least one provider at the top priority level
+     * (that supports this channel and hasn't failed) is currently free.
+     * Same-priority busy providers are skipped; a lower-priority tier is only
+     * reached when all providers at the top tier have actually failed.
+     */
     private function isChannelAvailable(string $key): bool
     {
-        $providers = $this->generator->getProviders($this->info['priority'] ?? []);
+        $info = $this->channelsInfo[$key] ?? [];
+        $providers = $this->generator->getProviders($info['priority'] ?? []);
         $f = $this->providersFailedByChannel[$key] ?? [];
         if (count($f) > 0) {
             $failedProviders = $this->generator->getProviders($f);
         } else {
             $failedProviders = [];
         }
+        $topPriority = null;
         foreach ($providers as $provider) {
             if (in_array($provider, $failedProviders)) {
                 continue;
             }
-            $providerClass = Utils::extractProviderName($provider);
             if (!$provider->channelExists($key)) {
                 continue;
-            } elseif (!$this->canUseProvider($providerClass)) {
+            }
+            $priority = $provider->getInstancePriority();
+            if ($topPriority === null) {
+                $topPriority = $priority;
+            } elseif ($priority < $topPriority) {
+                // All same-priority providers at the top tier were busy
                 return false;
-            } else {
+            }
+            $providerClass = Utils::extractProviderName($provider);
+            if ($this->canUseProvider($providerClass)) {
                 return true;
             }
         }
 
-        return true;
+        // No applicable providers found → let it proceed; all top-tier busy → block
+        return $topPriority === null;
     }
 
     public function shiftChannel(): array

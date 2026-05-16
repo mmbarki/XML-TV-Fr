@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace racacax\XmlTv\Component\Provider;
 
-use racacax\XmlTv\Component\ProviderCache;
-use racacax\XmlTv\ValueObject\EPGEnum;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
 use racacax\XmlTv\Component\ChannelFactory;
+use racacax\XmlTv\Component\Exception\NetworkConnectionException;
+use racacax\XmlTv\Component\ProviderCache;
+use racacax\XmlTv\Component\Utils;
 use racacax\XmlTv\Configurator;
 use racacax\XmlTv\ValueObject\Channel;
+use racacax\XmlTv\ValueObject\EPGEnum;
 
 abstract class AbstractProvider
 {
@@ -54,6 +57,11 @@ abstract class AbstractProvider
     public static function getPriority(): float
     {
         return self::$priority[static::class];
+    }
+
+    public function getInstancePriority(): float
+    {
+        return static::getPriority();
     }
 
     public function setStatus(string $status): void
@@ -104,7 +112,7 @@ abstract class AbstractProvider
      * @param array<string, string> $headers
      * @return string
      */
-    protected function getContentFromURL(string $url, array $headers = [], bool $ignoreCache = false): string
+    protected function getContentFromURL(string $url, array $headers = [], bool $ignoreCache = false, bool $decodeEntities = true): string
     {
         if (empty($headers['User-Agent'])) {
             $headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0';
@@ -117,6 +125,25 @@ abstract class AbstractProvider
             }
         }
 
+        @mkdir(dirname($cache->getLockPath()), 0777, true);
+        $fp = fopen($cache->getLockPath(), 'c');
+        if ($fp !== false) {
+            if (!flock($fp, LOCK_EX | LOCK_NB)) {
+                $this->setStatus(Utils::colorize('Cache en attente...', 'yellow'));
+                flock($fp, LOCK_EX);
+            }
+            // Another thread may have fetched and cached while we were waiting for the lock
+            if (!$ignoreCache) {
+                $content = $cache->getContent();
+                if (!empty($content)) {
+                    flock($fp, LOCK_UN);
+                    fclose($fp);
+
+                    return $content;
+                }
+            }
+        }
+
         try {
             $response = $this->client->get(
                 $url,
@@ -126,14 +153,28 @@ abstract class AbstractProvider
                     'timeout' => 20
                 ]
             );
+        } catch (ConnectException $e) {
+            if ($fp !== false) {
+                flock($fp, LOCK_UN);
+                fclose($fp);
+            }
+
+            throw new NetworkConnectionException('Connection failed: '.$e->getMessage(), 0, $e);
         } catch (\Throwable $e) {
-            // Hep to debug
-            // dump($e);
-            // No error accepted
+            if ($fp !== false) {
+                flock($fp, LOCK_UN);
+                fclose($fp);
+            }
+
             return '';
         }
-        $content = html_entity_decode($response->getBody()->getContents(), ENT_QUOTES);
+        $content = $decodeEntities ? html_entity_decode($response->getBody()->getContents(), ENT_QUOTES) : $response->getBody()->getContents();
         $cache->setContent($content);
+
+        if ($fp !== false) {
+            flock($fp, LOCK_UN);
+            fclose($fp);
+        }
 
         return $content;
     }
@@ -144,7 +185,8 @@ abstract class AbstractProvider
         if (count($startTimes) == 0) {
             return EPGEnum::$NO_CACHE;
         }
-        if (max($endTimes) - min($startTimes) > $config->getMinTimeRange()) {
+
+        if (Utils::getTimeSpanFromStartAndEndTimes($startTimes, $endTimes) > $config->getMinEndTime()) {
             return EPGEnum::$FULL_CACHE;
         } else {
             return EPGEnum::$PARTIAL_CACHE;

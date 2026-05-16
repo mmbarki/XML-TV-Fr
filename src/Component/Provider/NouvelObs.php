@@ -36,7 +36,7 @@ class NouvelObs extends AbstractProvider implements ProviderInterface
             return false;
         }
         for ($i = 2; $i < count($programs); $i++) {
-            $val = utf8_encode(explode('</table>', $programs[$i])[0]);
+            $val = mb_convert_encoding(explode('</table>', $programs[$i])[0], 'UTF-8', 'ISO-8859-1');
             preg_match('/<td class="logo_chaine.*?>(.*?)<\/td>/', $val, $start);
             preg_match('/line4">(.*?)</', $val, $csa);
             preg_match('/src="(.*?)"/', $val, $image);
