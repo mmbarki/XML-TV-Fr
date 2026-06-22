@@ -169,7 +169,7 @@ class ElCinema extends AbstractProvider implements ProviderInterface
                     'Accept'           => 'text/html, */*; q=0.01',
                 ],
                 'form_params' => [
-                    'data[only_date]' => $date,
+                    'data[only_date]' => $date . ' ' . $timeSlot,
                     'data[only_time]' => $timeSlot,
                     'data[direction]' => 'refresh',
                 ],
