@@ -8686,5 +8686,461 @@
   "viaMaTele.fr": {
     "icon": "https://static-cdn.tv.sfr.net/data/img/apps/chaines/logos/viamatele100x100couleur.png",
     "name": "Vià MATÉLÉ"
+  },
+  "2M.ma": {
+    "name": "2M Maroc",
+    "icon": "https://media0103.elcinema.com/tvguide/1353_2.png"
+  },
+  "AbuDhabi.ae": {
+    "name": "Abu Dhabi TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1136_2.png"
+  },
+  "AlAoulaMaroc.ma": {
+    "name": "Al Aoula Maroc",
+    "icon": "https://media0103.elcinema.com/tvguide/1312_2.png"
+  },
+  "AlArabia2.ar": {
+    "name": "Al Arabia 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1382_2.png"
+  },
+  "AlDC.eg": {
+    "name": "Al DC",
+    "icon": "https://media0103.elcinema.com/tvguide/1246_2.png"
+  },
+  "AlDhafra.ae": {
+    "name": "Al Dhafra",
+    "icon": "https://media0103.elcinema.com/tvguide/1264_2.png"
+  },
+  "AlHayat.eg": {
+    "name": "Al Hayat",
+    "icon": "https://media0103.elcinema.com/tvguide/1137_2.png"
+  },
+  "AlIraqiya.iq": {
+    "name": "Al Iraqiya",
+    "icon": "https://media0103.elcinema.com/tvguide/1349_2.png"
+  },
+  "AlJadeed.lb": {
+    "name": "Al Jadeed",
+    "icon": "https://media0103.elcinema.com/tvguide/1216_2.png"
+  },
+  "AlMasriya.eg": {
+    "name": "Al Masriya",
+    "icon": "https://media0103.elcinema.com/tvguide/1119_2.png"
+  },
+  "AlMehwar.eg": {
+    "name": "Al Mehwar",
+    "icon": "https://media0103.elcinema.com/tvguide/1145_2.png"
+  },
+  "AlNahar.eg": {
+    "name": "Al Nahar",
+    "icon": "https://media0103.elcinema.com/tvguide/1193_2.png"
+  },
+  "AlNaharDrama.eg": {
+    "name": "Al Nahar Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1223_2.png"
+  },
+  "AlQaheraWalNas.eg": {
+    "name": "Al Qahera Wal Nas",
+    "icon": "https://media0103.elcinema.com/tvguide/1174_2.png"
+  },
+  "AlQaheraWalNas2.eg": {
+    "name": "Al Qahera Wal Nas 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1252_2.png"
+  },
+  "AlRasheed.iq": {
+    "name": "Al Rasheed",
+    "icon": "https://media0103.elcinema.com/tvguide/1306_2.png"
+  },
+  "AlSaeeda.ye": {
+    "name": "Al Saeeda",
+    "icon": "https://media0103.elcinema.com/tvguide/1339_2.png"
+  },
+  "AlSharqiya.iq": {
+    "name": "Al Sharqiya",
+    "icon": "https://media0103.elcinema.com/tvguide/1269_2.png"
+  },
+  "AlShorouqAlgerienne.dz": {
+    "name": "Al Chorouk TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1315_2.png"
+  },
+  "AlSumariya.iq": {
+    "name": "Al Sumariya",
+    "icon": "https://media0103.elcinema.com/tvguide/1301_2.png"
+  },
+  "AlThanya.ma": {
+    "name": "Al Thanya",
+    "icon": "https://media0103.elcinema.com/tvguide/1398_2.png"
+  },
+  "AlWasat.ar": {
+    "name": "Al Wasat",
+    "icon": "https://media0103.elcinema.com/tvguide/1383_2.png"
+  },
+  "AlWataniya1.tn": {
+    "name": "Al Wataniya 1",
+    "icon": "https://media0103.elcinema.com/tvguide/1308_2.png"
+  },
+  "ATVTurkey.tr": {
+    "name": "ATV Turkey",
+    "icon": "https://media0103.elcinema.com/tvguide/1380_2.png"
+  },
+  "BeINDrama.ar": {
+    "name": "beIN Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1309_2.png"
+  },
+  "BeINMoviesAction.ar": {
+    "name": "beIN Movies Action",
+    "icon": "https://media0103.elcinema.com/tvguide/1323_2.png"
+  },
+  "BeINMoviesDrama.ar": {
+    "name": "beIN Movies Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1324_2.png"
+  },
+  "BeINMoviesFamily.ar": {
+    "name": "beIN Movies Family",
+    "icon": "https://media0103.elcinema.com/tvguide/1325_2.png"
+  },
+  "BeINMoviesPremiere.ar": {
+    "name": "beIN Movies Premiere",
+    "icon": "https://media0103.elcinema.com/tvguide/1322_2.png"
+  },
+  "BeINSeries.ar": {
+    "name": "beIN Series",
+    "icon": "https://media0103.elcinema.com/tvguide/1327_2.png"
+  },
+  "BeINSeries2.ar": {
+    "name": "beIN Series HD 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1328_2.png"
+  },
+  "CBC.eg": {
+    "name": "CBC Egypt",
+    "icon": "https://media0103.elcinema.com/tvguide/1198_2.png"
+  },
+  "CBCDrama.eg": {
+    "name": "CBC Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1199_2.png"
+  },
+  "CBCSofra.eg": {
+    "name": "CBC Sofra",
+    "icon": "https://media0103.elcinema.com/tvguide/1260_2.png"
+  },
+  "Cima.eg": {
+    "name": "Cima",
+    "icon": "https://media0103.elcinema.com/tvguide/1176_2.png"
+  },
+  "Dijlah.iq": {
+    "name": "Dijlah",
+    "icon": "https://media0103.elcinema.com/tvguide/1385_2.png"
+  },
+  "Discovery.ar": {
+    "name": "Discovery Arabia",
+    "icon": "https://media0103.elcinema.com/tvguide/1272_2.png"
+  },
+  "DMC.eg": {
+    "name": "DMC",
+    "icon": "https://media0103.elcinema.com/tvguide/1290_2.png"
+  },
+  "DMCDrama.eg": {
+    "name": "DMC Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1292_2.png"
+  },
+  "DubaiOne.ae": {
+    "name": "Dubai One",
+    "icon": "https://media0103.elcinema.com/tvguide/1173_2.png"
+  },
+  "DubaiTV.ae": {
+    "name": "Dubai TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1169_2.png"
+  },
+  "DubaiZaman.ae": {
+    "name": "Dubai Zaman",
+    "icon": "https://media0103.elcinema.com/tvguide/1283_2.png"
+  },
+  "EgyptFirstChannel.eg": {
+    "name": "Egypt Channel 1",
+    "icon": "https://media0103.elcinema.com/tvguide/1101_2.png"
+  },
+  "Emirates.ae": {
+    "name": "Emirates TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1135_2.png"
+  },
+  "Fujairah.ae": {
+    "name": "Fujairah TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1302_2.png"
+  },
+  "HadhramoutTV.ye": {
+    "name": "Hadramout TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1374_2.png"
+  },
+  "iFilm.ar": {
+    "name": "iFilm",
+    "icon": "https://media0103.elcinema.com/tvguide/1204_2.png"
+  },
+  "JordanTV.jo": {
+    "name": "Jordan TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1314_2.png"
+  },
+  "LBC.lb": {
+    "name": "LBC",
+    "icon": "https://media0103.elcinema.com/tvguide/1341_2.png"
+  },
+  "LBCI.lb": {
+    "name": "LBCI",
+    "icon": "https://media0103.elcinema.com/tvguide/1168_2.png"
+  },
+  "LTCI.lb": {
+    "name": "LTC Lebanon",
+    "icon": "https://media0103.elcinema.com/tvguide/1313_2.png"
+  },
+  "Massa.ar": {
+    "name": "Massa",
+    "icon": "https://media0103.elcinema.com/tvguide/1401_2.png"
+  },
+  "MaspeiroZaman.eg": {
+    "name": "Maspero Zaman",
+    "icon": "https://media0103.elcinema.com/tvguide/1336_2.png"
+  },
+  "MBC1.ar": {
+    "name": "MBC 1",
+    "icon": "https://media0103.elcinema.com/tvguide/1127_2.png"
+  },
+  "MBC2.ar": {
+    "name": "MBC 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1128_2.png"
+  },
+  "MBC3.ar": {
+    "name": "MBC 3",
+    "icon": "https://media0103.elcinema.com/tvguide/1241_2.png"
+  },
+  "MBC4.ar": {
+    "name": "MBC 4",
+    "icon": "https://media0103.elcinema.com/tvguide/1129_2.png"
+  },
+  "MBC5.ar": {
+    "name": "MBC 5",
+    "icon": "https://media0103.elcinema.com/tvguide/1354_2.png"
+  },
+  "MBCAction.ar": {
+    "name": "MBC Action",
+    "icon": "https://media0103.elcinema.com/tvguide/1130_2.png"
+  },
+  "MBCBollywood.ar": {
+    "name": "MBC Bollywood",
+    "icon": "https://media0103.elcinema.com/tvguide/1259_2.png"
+  },
+  "MBCDramaPlus.ar": {
+    "name": "MBC Drama +",
+    "icon": "https://media0103.elcinema.com/tvguide/1131_2.png"
+  },
+  "MBCIraq.iq": {
+    "name": "MBC Iraq",
+    "icon": "https://media0103.elcinema.com/tvguide/1340_2.png"
+  },
+  "MBCMasr.eg": {
+    "name": "MBC Masr",
+    "icon": "https://media0103.elcinema.com/tvguide/1239_2.png"
+  },
+  "MBCMasr2.eg": {
+    "name": "MBC Masr 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1278_2.png"
+  },
+  "MBCMasrDrama.eg": {
+    "name": "MBC Masr Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1399_2.png"
+  },
+  "MBCMax.ar": {
+    "name": "MBC Max",
+    "icon": "https://media0103.elcinema.com/tvguide/1132_2.png"
+  },
+  "Mix.ar": {
+    "name": "Mix",
+    "icon": "https://media0103.elcinema.com/tvguide/1355_2.png"
+  },
+  "MixBilArabi.ar": {
+    "name": "Mix Bil Arabi",
+    "icon": "https://media0103.elcinema.com/tvguide/1371_2.png"
+  },
+  "MixOne.ar": {
+    "name": "Mix One",
+    "icon": "https://media0103.elcinema.com/tvguide/1373_2.png"
+  },
+  "MTV.lb": {
+    "name": "MTV Lebanon",
+    "icon": "https://media0103.elcinema.com/tvguide/1296_2.png"
+  },
+  "NatGeo.ar": {
+    "name": "National Geographic Arabia",
+    "icon": "https://media0103.elcinema.com/tvguide/1275_2.png"
+  },
+  "Nesma.tn": {
+    "name": "Nesma TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1304_2.png"
+  },
+  "NetworkArabia.ar": {
+    "name": "Network Arabia",
+    "icon": "https://media0103.elcinema.com/tvguide/1242_2.png"
+  },
+  "NileDrama.eg": {
+    "name": "Nile Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1156_2.png"
+  },
+  "NileLife.eg": {
+    "name": "Nile Life",
+    "icon": "https://media0103.elcinema.com/tvguide/1159_2.png"
+  },
+  "OmanTV.om": {
+    "name": "Oman TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1298_2.png"
+  },
+  "OmanTVSultan.om": {
+    "name": "Oman TV Sultan",
+    "icon": "https://media0103.elcinema.com/tvguide/1317_2.png"
+  },
+  "OnDrama.eg": {
+    "name": "On Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1134_2.png"
+  },
+  "OnE.eg": {
+    "name": "On E",
+    "icon": "https://media0103.elcinema.com/tvguide/1203_2.png"
+  },
+  "OneDrama.ar": {
+    "name": "One Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1405_2.png"
+  },
+  "OneMovies.ar": {
+    "name": "One Movies",
+    "icon": "https://media0103.elcinema.com/tvguide/1404_2.png"
+  },
+  "OSNComedy.ar": {
+    "name": "OSN Comedy",
+    "icon": "https://media0103.elcinema.com/tvguide/1257_2.png"
+  },
+  "OSNCrime.ar": {
+    "name": "OSN Crime",
+    "icon": "https://media0103.elcinema.com/tvguide/1395_2.png"
+  },
+  "OSNFamilyMovies.ar": {
+    "name": "OSN Family Movies",
+    "icon": "https://media0103.elcinema.com/tvguide/1392_2.png"
+  },
+  "OSNKids.ar": {
+    "name": "OSN Kids",
+    "icon": "https://media0103.elcinema.com/tvguide/1232_2.png"
+  },
+  "OSNMoviesAction.ar": {
+    "name": "OSN Movies Action",
+    "icon": "https://media0103.elcinema.com/tvguide/1211_2.png"
+  },
+  "OSNMoviesComedy.ar": {
+    "name": "OSN Movies Comedy",
+    "icon": "https://media0103.elcinema.com/tvguide/1231_2.png"
+  },
+  "OSNMoviesHollywood.ar": {
+    "name": "OSN Movies Hollywood",
+    "icon": "https://media0103.elcinema.com/tvguide/1391_2.png"
+  },
+  "OSNMoviesPremiere.ar": {
+    "name": "OSN Movies Premiere",
+    "icon": "https://media0103.elcinema.com/tvguide/1213_2.png"
+  },
+  "OSNNow.ar": {
+    "name": "OSN Now",
+    "icon": "https://media0103.elcinema.com/tvguide/1396_2.png"
+  },
+  "OSNOne.ar": {
+    "name": "OSN One",
+    "icon": "https://media0103.elcinema.com/tvguide/1393_2.png"
+  },
+  "OSNShowcase.ar": {
+    "name": "OSN Showcase",
+    "icon": "https://media0103.elcinema.com/tvguide/1394_2.png"
+  },
+  "OSNYaHala.ar": {
+    "name": "OSN Ya Hala",
+    "icon": "https://media0103.elcinema.com/tvguide/1205_2.png"
+  },
+  "OSNYaHalaAflamArabiya.ar": {
+    "name": "OSN Ya Hala Aflam Arabiya",
+    "icon": "https://media0103.elcinema.com/tvguide/1285_2.png"
+  },
+  "OSNYaHalaBilArabi.ar": {
+    "name": "OSN Ya Hala Bil Arabi",
+    "icon": "https://media0103.elcinema.com/tvguide/1390_2.png"
+  },
+  "RotanaCinemaMasr.eg": {
+    "name": "Rotana Cinema Masr",
+    "icon": "https://media0103.elcinema.com/tvguide/1148_2.png"
+  },
+  "RotanaComedy.ar": {
+    "name": "Rotana Comedy",
+    "icon": "https://media0103.elcinema.com/tvguide/1358_2.png"
+  },
+  "RotanaDrama.ar": {
+    "name": "Rotana Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1147_2.png"
+  },
+  "RotanaKhaleejia.ar": {
+    "name": "Rotana Khaleejia",
+    "icon": "https://media0103.elcinema.com/tvguide/1149_2.png"
+  },
+  "Roya.jo": {
+    "name": "Roya TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1299_2.png"
+  },
+  "SadaElBalad.eg": {
+    "name": "Sada El Balad",
+    "icon": "https://media0103.elcinema.com/tvguide/1226_2.png"
+  },
+  "SadaElBalad2.eg": {
+    "name": "Sada El Balad 2",
+    "icon": "https://media0103.elcinema.com/tvguide/1279_2.png"
+  },
+  "SadaElBaladDrama.eg": {
+    "name": "Sada El Balad Drama",
+    "icon": "https://media0103.elcinema.com/tvguide/1227_2.png"
+  },
+  "SamaDubai.ae": {
+    "name": "Sama Dubai",
+    "icon": "https://media0103.elcinema.com/tvguide/1177_2.png"
+  },
+  "SaudiTV1.sa": {
+    "name": "Saudi TV 1",
+    "icon": "https://media0103.elcinema.com/tvguide/1352_2.png"
+  },
+  "SBC.sa": {
+    "name": "SBC",
+    "icon": "https://media0103.elcinema.com/tvguide/1297_2.png"
+  },
+  "Sharjah.ae": {
+    "name": "Sharjah TV",
+    "icon": "https://media0103.elcinema.com/tvguide/1188_2.png"
+  },
+  "StarAction.ar": {
+    "name": "Star Action",
+    "icon": "https://media0103.elcinema.com/tvguide/1330_2.png"
+  },
+  "StarMovies.ar": {
+    "name": "Star Movies",
+    "icon": "https://media0103.elcinema.com/tvguide/1212_2.png"
+  },
+  "StarWorld.ar": {
+    "name": "Star World",
+    "icon": "https://media0103.elcinema.com/tvguide/1329_2.png"
+  },
+  "Ten.eg": {
+    "name": "Ten",
+    "icon": "https://media0103.elcinema.com/tvguide/1280_2.png"
+  },
+  "UTVI.ar": {
+    "name": "UTV",
+    "icon": "https://media0103.elcinema.com/tvguide/1367_2.png"
+  },
+  "ZeeAlwan.ar": {
+    "name": "Zee Alwan",
+    "icon": "https://media0103.elcinema.com/tvguide/1261_2.png"
+  },
+  "Zekrayat.ar": {
+    "name": "Zekrayat",
+    "icon": "https://media0103.elcinema.com/tvguide/1366_2.png"
   }
 }
